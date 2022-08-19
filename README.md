@@ -11,7 +11,7 @@
 
 ## Description
 
-This bot is a simple Discord bot to get the timezone of anyone. Powered by the [**[TimezoneDB](https://tzdb.synapsetech.dev/)**](https://tzdb.synapsetech.dev/) API.
+This bot is a simple Discord bot to get the timezone of anyone. Powered by the **[TimezoneDB](https://tzdb.synapsetech.dev/)** API.
 
 ## Setup
 

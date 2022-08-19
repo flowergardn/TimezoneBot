@@ -18,8 +18,4 @@ Anyone is free to invite the bot to their server, invite it [here!](https://disc
 
 ## Setting up Timezone Bot locally
 
-Setup should be relatively easy. Just clone the repository, edit `example.env` to contain your bot token. After that, run `npm install`, `npm prestart` and then `npm start`. Or, if you want to develop, run `npm run dev`.
-
-# License
-
-[MIT](LICENSE)
+Setup should be relatively easy. Just clone the repository, and edit `example.env` to contain your bot token. After that, run `npm install`, `npm prestart` and then `npm start`. Or, if you want to develop, run `npm run dev`.

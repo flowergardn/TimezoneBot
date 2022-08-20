@@ -1,10 +1,11 @@
 import { importx } from '@discordx/importer';
 import { Client } from 'discordx';
+import { Intents } from 'discord.js';
 
 require('dotenv').config();
 
 export const client = new Client({
-	intents: [],
+	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS],
 	silent: false
 });
 
@@ -17,6 +18,7 @@ client.on('ready', async () => {
 
 async function start() {
 	await importx(__dirname + '/commands/*.{js,ts}');
+	await importx(__dirname + '/events/*.{js,ts}');
 	await client.login(process.env.TOKEN!!);
 }
 

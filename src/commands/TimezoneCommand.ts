@@ -4,15 +4,21 @@ import get, { AxiosError } from 'axios';
 import { getTime } from '../lib/Utils';
 
 async function getTimezoneEmbed(interaction: CommandInteraction | ContextMenuInteraction, user: User | GuildMember) {
+	// this is so messy but, I blame typescript and me wanting to support users not in the guild
 	const username = !(user instanceof GuildMember) ? user.username : user.user.username;
+	const id = !(user instanceof GuildMember) ? user.id : user.user.id;
 
+	// TODO: Look into sentry?
 	let tzResponse;
 	try {
-		tzResponse = await get(`https://tzdbapi.synapsetech.dev/v1/users/byPlatform/discord/${user.id}`);
+		tzResponse = await get(`https://tzdbapi.synapsetech.dev/v1/users/byPlatform/discord/${id}`);
 	} catch (e: AxiosError | Error | any) {
 		if (e.response.statusText === 'Not Found') {
 			const embed = new MessageEmbed().setTitle('Error').setColor('#eb4c3b');
 			return embed.setDescription(`${username} hasn't setup their timezone yet! Tell them to do ${Formatters.inlineCode(`/setup`)}.`);
+		} else {
+			console.log(`Error getting timezone for ${username}:`);
+			console.log(e);
 		}
 		return new MessageEmbed().setTitle('Error').setColor('#eb4c3b').setDescription('An error occurred while trying to get your timezone!');
 	}

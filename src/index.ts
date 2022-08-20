@@ -9,6 +9,10 @@ export const client = new Client({
 	silent: false
 });
 
+client.on('interactionCreate', (interaction) => {
+	client.executeInteraction(interaction);
+});
+
 client.on('ready', async () => {
 	await client.clearApplicationCommands();
 	await client.initApplicationCommands();
